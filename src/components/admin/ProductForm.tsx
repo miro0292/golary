@@ -125,8 +125,8 @@ export default function ProductForm({ initial }: { initial?: AdminProduct }) {
                 <input type="number" min={0} step={100} className={input} value={p.cost || ""} onChange={(e) => set("cost", Number(e.target.value))} />
               </div>
             </div>
-            <p className="text-sm text-gray-600">
-              Ganancia por unidad: <b>{formatCOP(p.price - p.cost)}</b> · Margen: <b className={margin < 20 ? "text-sale" : "text-green-700"}>{margin}%</b>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              Ganancia por unidad: <b>{formatCOP(p.price - p.cost)}</b> · Margen: <b className={margin < 20 ? "text-sale" : "text-green-700 dark:text-green-400"}>{margin}%</b>
             </p>
           </Card>
 
@@ -142,7 +142,7 @@ export default function ProductForm({ initial }: { initial?: AdminProduct }) {
                 <input type="number" min={0} className={input} value={p.minStock} onChange={(e) => set("minStock", Number(e.target.value))} />
               </div>
             </div>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
               Las cantidades se cargan desde <b>Inventario</b> (entradas de producción, ajustes), así queda registro de cada movimiento.
             </p>
           </Card>
@@ -151,7 +151,7 @@ export default function ProductForm({ initial }: { initial?: AdminProduct }) {
         <div className="space-y-6">
           <Card className="space-y-4">
             <h2 className="font-bold">Imagen</h2>
-            <div className="grid aspect-square place-items-center rounded-lg bg-gradient-to-br from-gray-50 to-gray-200 p-8">
+            <div className="grid aspect-square place-items-center rounded-lg bg-gradient-to-br from-gray-50 to-gray-200 p-8 dark:from-white/5 dark:to-white/10">
               <BallArt kind={p.kind} colors={p.colors} className="size-full" />
             </div>
             <div className="grid grid-cols-2 gap-3">
@@ -164,7 +164,7 @@ export default function ProductForm({ initial }: { initial?: AdminProduct }) {
                 <input type="color" className="h-10 w-full cursor-pointer rounded" value={p.colors[1]} onChange={(e) => set("colors", [p.colors[0], e.target.value])} />
               </div>
             </div>
-            <button type="button" disabled className="flex w-full items-center justify-center gap-2 rounded-lg border-2 border-dashed border-gray-300 py-4 text-sm text-gray-400">
+            <button type="button" disabled className="flex w-full items-center justify-center gap-2 rounded-lg border-2 border-dashed border-gray-300 py-4 text-sm text-gray-400 dark:border-white/15 dark:text-gray-500">
               <ImagePlus className="size-5" /> Subir fotos (al conectar la base de datos)
             </button>
           </Card>

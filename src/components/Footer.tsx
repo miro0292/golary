@@ -1,7 +1,7 @@
 import Image from "next/image";
 import logo from "@/assets/logo-golary.png";
 import Link from "next/link";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { categories } from "@/lib/products";
 import { STORE } from "@/lib/config";
 
@@ -52,13 +52,19 @@ export default function Footer() {
           <ul className="mt-3 space-y-3 text-sm">
             <li>
               <a className="flex items-center gap-2 hover:text-brand" href={`https://wa.me/${STORE.whatsapp}`} target="_blank" rel="noreferrer">
-                <MessageCircle className="size-4" /> WhatsApp
+                <MessageCircle className="size-4 shrink-0" /> WhatsApp
               </a>
             </li>
             <li>
               <a className="flex items-center gap-2 hover:text-brand" href={`mailto:${STORE.email}`}>
-                <Mail className="size-4" /> {STORE.email}
+                <Mail className="size-4 shrink-0" /> {STORE.email}
               </a>
+            </li>
+            <li className="flex items-center gap-2">
+              <Phone className="size-4 shrink-0" /> {STORE.phones[2]}
+            </li>
+            <li className="flex items-start gap-2">
+              <MapPin className="mt-0.5 size-4 shrink-0" /> {STORE.address}
             </li>
           </ul>
         </div>

@@ -1,8 +1,17 @@
-// Catálogo de PRUEBA (dummy). En la Fase 2 esto vendrá de la base de datos (Supabase).
+// Catálogo de PRUEBA (dummy), con algunos productos ya usando FOTOS REALES de
+// golary.co (nombres y precios también tomados de ahí). En la Fase 2 esto
+// vendrá de la base de datos (Supabase).
 import type { StaticImageData } from "next/image";
 import ejemploProMatch from "@/assets/products/ejemplo-pro-match.jpg";
 import ejemploNightGlow from "@/assets/products/ejemplo-night-glow.jpg";
 import ejemploStrike from "@/assets/products/ejemplo-strike.jpg";
+// Fotos REALES de producto (las que cargaste en src/assets/products):
+import realProfesional from "@/assets/products/GOLARY-PRO-2.jpg";
+import realVolleyball from "@/assets/products/GOLARY-VOLLEIBALL-2.jpg";
+import realRookie from "@/assets/products/5ROCKYRJ2.jpg";
+import realProMax from "@/assets/products/pmxams3.jpg";
+import realChallenge from "@/assets/products/ch1.jpg";
+import realChallengeFutsal from "@/assets/products/chm2-1.jpg";
 
 export type BallKind = "futbol" | "futsal" | "voleibol" | "baloncesto" | "microfutbol";
 
@@ -30,10 +39,11 @@ export type Product = {
   badge?: "Nuevo" | "Más vendido" | "Oferta" | "Profesional";
   description: string;
   features: string[];
-  // Foto de EJEMPLO (no es un balón real de Golary todavía). Mientras no exista
-  // la foto real del producto, se usa esta para dar una idea de cómo se vería;
-  // si no hay ninguna, se dibuja el balón con BallArt.
+  // Foto del producto. Si `photoReal` es true, es una foto REAL de fábrica.
+  // Si no, es una foto de EJEMPLO (para dar una idea mientras llega la real).
+  // Sin foto, se dibuja el balón con BallArt.
   image?: StaticImageData;
+  photoReal?: boolean;
 };
 
 export const categories: Category[] = [
@@ -65,19 +75,21 @@ const featuresByKind: Record<BallKind, string[]> = {
 
 const seeds: Seed[] = [
   // Fútbol
-  { name: "Balón Fútbol Golary Pro Match", category: "futbol", kind: "futbol", price: 189900, colors: ["#ffffff", "#00a8e8"], sizes: ["5"], stock: 42, badge: "Profesional",
-    description: "Nuestro balón de competencia. Termosellado para máxima precisión en el tiro y una trayectoria estable.", image: ejemploProMatch },
-  { name: "Balón Fútbol Golary Strike", category: "futbol", kind: "futbol", price: 99900, oldPrice: 129900, colors: ["#ffffff", "#111827"], sizes: ["4", "5"], stock: 80, badge: "Oferta",
-    description: "Cosido a máquina, ideal para entrenamientos intensos en grama natural y sintética.", image: ejemploStrike },
-  { name: "Balón Fútbol Golary Training", category: "futbol", kind: "futbol", price: 69900, colors: ["#facc15", "#111827"], sizes: ["3", "4", "5"], stock: 120, badge: "Más vendido",
-    description: "Resistente y económico para escuelas de fútbol y clubes." },
+  { name: "Balón Fútbol Golary Pro Max", category: "futbol", kind: "futbol", price: 189900, colors: ["#facc15", "#dc2626"], sizes: ["5"], stock: 42,
+    description: "Elaborado en material imperial de 2,2 mm exclusivo Golary: mayor suavidad, mejor rebote y una trayectoria estable.", image: realProMax, photoReal: true },
+  { name: "Balón Fútbol Golary Challenge", category: "futbol", kind: "futbol", price: 165000, colors: ["#ffffff", "#1d4ed8"], sizes: ["5"], stock: 25, badge: "Nuevo",
+    description: "Nuestra línea tope de gama: cubierta de alta resistencia y acabado premium para competencia.", image: realChallenge, photoReal: true },
+  { name: "Balón Fútbol Golary Profesional", category: "futbol", kind: "futbol", price: 122000, colors: ["#facc15", "#111827"], sizes: ["4", "5"], stock: 80, badge: "Profesional",
+    description: "Cubierta con laminado PU: excelente acabado y alta resistencia al roce en cualquier tipo de terreno.", image: realProfesional, photoReal: true },
+  { name: "Balón Fútbol Golary Rookie", category: "futbol", kind: "futbol", price: 89900, colors: ["#dc2626", "#1e3a8a"], sizes: ["3", "4", "5"], stock: 120, badge: "Más vendido",
+    description: "Neumático de butilo de dos capas, enmallado en nylon: resistente y económico para escuelas y clubes.", image: realRookie, photoReal: true },
   { name: "Balón Fútbol Golary Kids", category: "futbol", kind: "futbol", price: 49900, colors: ["#ffffff", "#e4002b"], sizes: ["3", "4"], stock: 64,
     description: "Más liviano para los más pequeños. Perfecto para iniciar." },
   { name: "Balón Fútbol Golary Night Glow", category: "futbol", kind: "futbol", price: 119900, colors: ["#a3e635", "#0b0b0c"], sizes: ["5"], stock: 18, badge: "Nuevo",
     description: "Colores de alta visibilidad para partidos nocturnos.", image: ejemploNightGlow },
   // Futsal
-  { name: "Balón Futsal Golary Indoor Pro", category: "futsal", kind: "futsal", price: 149900, colors: ["#ffffff", "#00a8e8"], sizes: ["3.5", "4"], stock: 35, badge: "Profesional",
-    description: "Diseñado para competencia en coliseo, con rebote controlado." },
+  { name: "Balón Futsal Golary Challenge", category: "futsal", kind: "futsal", price: 149900, colors: ["#facc15", "#1d4ed8"], sizes: ["3.5", "4"], stock: 35, badge: "Profesional",
+    description: "Nuestra línea tope de gama para futsal: diseñado para competencia en coliseo, con rebote controlado.", image: realChallengeFutsal, photoReal: true },
   { name: "Balón Futsal Golary Control", category: "futsal", kind: "futsal", price: 89900, colors: ["#f97316", "#111827"], sizes: ["4"], stock: 58, badge: "Más vendido",
     description: "Agarre y control para jugadas rápidas en sintética." },
   { name: "Balón Futsal Golary Street", category: "futsal", kind: "futsal", price: 64900, oldPrice: 79900, colors: ["#111827", "#00a8e8"], sizes: ["4"], stock: 40, badge: "Oferta",
@@ -87,8 +99,8 @@ const seeds: Seed[] = [
   // Voleibol
   { name: "Balón Voleibol Golary Spike", category: "voleibol", kind: "voleibol", price: 129900, colors: ["#facc15", "#1d4ed8"], sizes: ["5"], stock: 30, badge: "Profesional",
     description: "Vuelo estable y tacto suave para competencia en sala." },
-  { name: "Balón Voleibol Golary Soft Touch", category: "voleibol", kind: "voleibol", price: 79900, colors: ["#ffffff", "#00a8e8"], sizes: ["4", "5"], stock: 55, badge: "Más vendido",
-    description: "Ideal para colegios y entrenamientos." },
+  { name: "Balón Voleibol Golary Soft Touch 3.0", category: "voleibol", kind: "voleibol", price: 107000, colors: ["#ffffff", "#ef4444"], sizes: ["4", "5"], stock: 55, badge: "Más vendido",
+    description: "Tacto suave y vuelo estable, ideal para colegios y entrenamientos.", image: realVolleyball, photoReal: true },
   { name: "Balón Voleibol Golary Beach", category: "voleibol", kind: "voleibol", price: 69900, colors: ["#fb7185", "#facc15"], sizes: ["5"], stock: 22, badge: "Nuevo",
     description: "Pensado para voleibol playa y recreación." },
   { name: "Balón Voleibol Golary School", category: "voleibol", kind: "voleibol", price: 44900, oldPrice: 54900, colors: ["#ffffff", "#16a34a"], sizes: ["4"], stock: 90, badge: "Oferta",
@@ -116,6 +128,11 @@ const seeds: Seed[] = [
     description: "Balón de competencia internacional." },
 ];
 
+// Mientras no hay fotos reales de cada producto, repartimos estas fotos de EJEMPLO
+// entre todos los balones (no son el balón real; se reemplazan cuando lleguen las
+// fotos de fábrica). Para agregar más, importa el archivo arriba y añádelo aquí.
+const examplePhotos: StaticImageData[] = [ejemploProMatch, ejemploStrike, ejemploNightGlow];
+
 function slugify(s: string) {
   return s
     .toLowerCase()
@@ -132,7 +149,9 @@ export const products: Product[] = seeds.map((s, i) => ({
   rating: Math.round((4.1 + ((i * 37) % 9) / 10) * 10) / 10,
   reviews: 12 + ((i * 53) % 240),
   features: s.features ?? featuresByKind[s.kind],
-  image: s.image,
+  // "Importados" son de otras marcas: no les ponemos fotos con el logo Golary
+  // (ni reales ni de ejemplo), se quedan con el balón ilustrado (BallArt).
+  image: s.category === "importados" ? s.image : (s.image ?? examplePhotos[i % examplePhotos.length]),
 }));
 
 export const getCategory = (slug: string) => categories.find((c) => c.slug === slug);

@@ -52,9 +52,11 @@ export default async function ProductPage({ params }: Props) {
             {p.image ? (
               <div className="relative aspect-square overflow-hidden rounded-xl bg-gray-100 dark:bg-white/5">
                 <Image src={p.image} alt={p.name} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" priority />
-                <span className="absolute bottom-3 right-3 rounded bg-white/80 px-2 py-1 text-[11px] text-gray-500 dark:bg-black/60 dark:text-gray-300">
-                  Foto de ejemplo, aún no es el producto final
-                </span>
+                {!p.photoReal && (
+                  <span className="absolute bottom-3 right-3 rounded bg-white/80 px-2 py-1 text-[11px] text-gray-500 dark:bg-black/60 dark:text-gray-300">
+                    Foto de ejemplo, aún no es el producto final
+                  </span>
+                )}
               </div>
             ) : (
               <>

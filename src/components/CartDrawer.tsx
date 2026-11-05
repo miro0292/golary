@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { STORE, formatCOP } from "@/lib/config";
@@ -55,8 +56,12 @@ export default function CartDrawer() {
             <ul className="flex-1 divide-y overflow-y-auto px-4 dark:divide-white/10">
               {lines.map((l) => (
                 <li key={`${l.slug}-${l.size}`} className="flex gap-3 py-4">
-                  <div className="size-20 shrink-0 rounded bg-gray-100 p-2 dark:bg-white/5">
-                    <BallArt kind={l.product.kind} colors={l.product.colors} className="size-full" />
+                  <div className="relative size-20 shrink-0 overflow-hidden rounded bg-gray-100 dark:bg-white/5">
+                    {l.product.image ? (
+                      <Image src={l.product.image} alt={l.product.name} fill sizes="80px" className="object-cover" />
+                    ) : (
+                      <BallArt kind={l.product.kind} colors={l.product.colors} className="size-full p-2" />
+                    )}
                   </div>
                   <div className="flex flex-1 flex-col gap-1">
                     <p className="text-sm font-semibold leading-snug">{l.product.name}</p>

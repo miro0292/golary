@@ -65,11 +65,11 @@ export default function Dashboard() {
         {kpis.map(({ label, value, sub, icon: Icon, warn }) => (
           <Card key={label}>
             <div className="flex items-start justify-between">
-              <p className="text-xs font-bold uppercase tracking-wide text-gray-500">{label}</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400">{label}</p>
               <Icon className={`size-5 ${warn ? "text-orange-500" : "text-brand"}`} />
             </div>
             <p className="mt-2 font-display text-2xl font-bold sm:text-3xl">{value}</p>
-            <p className="text-xs text-gray-500">{sub}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">{sub}</p>
           </Card>
         ))}
       </div>
@@ -77,12 +77,12 @@ export default function Dashboard() {
       <div className="mt-6 grid gap-6 xl:grid-cols-3">
         <Card className="xl:col-span-2">
           <h2 className="font-bold">Ventas últimos 14 días</h2>
-          <p className="mb-4 text-xs text-gray-500">Pasa el cursor sobre una barra para ver el detalle</p>
+          <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">Pasa el cursor sobre una barra para ver el detalle</p>
           <SalesChart data={stats.days} />
         </Card>
         <Card>
           <h2 className="font-bold">Ventas por canal</h2>
-          <p className="mb-4 text-xs text-gray-500">Últimos 30 días · {formatCOP(stats.last30Total)}</p>
+          <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">Últimos 30 días · {formatCOP(stats.last30Total)}</p>
           <ul className="space-y-4">
             {stats.byChannel.map((c) => {
               const pct = stats.last30Total ? Math.round((c.value / stats.last30Total) * 100) : 0;
@@ -90,9 +90,9 @@ export default function Dashboard() {
                 <li key={c.channel}>
                   <div className="mb-1 flex justify-between text-sm">
                     <span className="font-semibold">{c.channel}</span>
-                    <span className="text-gray-600">{formatCOP(c.value)} · {pct}%</span>
+                    <span className="text-gray-600 dark:text-gray-300">{formatCOP(c.value)} · {pct}%</span>
                   </div>
-                  <div className="h-2 rounded-full bg-gray-100">
+                  <div className="h-2 rounded-full bg-gray-100 dark:bg-white/10">
                     <div className="h-full rounded-full bg-brand" style={{ width: `${pct}%` }} />
                   </div>
                 </li>
@@ -109,15 +109,15 @@ export default function Dashboard() {
             <Link href="/admin/inventario" className="text-xs font-semibold text-brand-dark hover:underline">Ir a inventario</Link>
           </div>
           {stats.low.length === 0 ? (
-            <p className="text-sm text-gray-500">Todo el inventario está en buen nivel.</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Todo el inventario está en buen nivel.</p>
           ) : (
-            <ul className="divide-y">
+            <ul className="divide-y dark:divide-white/10">
               {stats.low.slice(0, 6).map((p) => (
                 <li key={p.id} className="flex items-center gap-3 py-2">
                   <Thumb p={p} size="size-9" />
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-semibold">{p.name}</p>
-                    <p className="text-xs text-orange-600">
+                    <p className="text-xs text-orange-600 dark:text-orange-400">
                       {lowSizes(p).map((s) => `T${s}: ${p.stock[s] ?? 0}`).join(" · ")}
                     </p>
                   </div>
@@ -129,7 +129,7 @@ export default function Dashboard() {
 
         <Card>
           <h2 className="mb-3 font-bold">Más vendidos (30 días)</h2>
-          <ol className="divide-y">
+          <ol className="divide-y dark:divide-white/10">
             {stats.top.map(([id, qty], i) => {
               const p = products.find((x) => x.id === id);
               if (!p) return null;
@@ -138,7 +138,7 @@ export default function Dashboard() {
                   <span className="w-4 text-sm font-bold text-gray-400">{i + 1}</span>
                   <Thumb p={p} size="size-9" />
                   <p className="min-w-0 flex-1 truncate text-sm font-semibold">{p.name}</p>
-                  <span className="text-sm text-gray-600">{qty} und.</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300">{qty} und.</span>
                 </li>
               );
             })}
@@ -150,12 +150,12 @@ export default function Dashboard() {
             <h2 className="font-bold">Últimas ventas</h2>
             <Link href="/admin/ventas" className="text-xs font-semibold text-brand-dark hover:underline">Ver todas</Link>
           </div>
-          <ul className="divide-y">
+          <ul className="divide-y dark:divide-white/10">
             {sales.slice(0, 6).map((s) => (
               <li key={s.id} className="flex items-center justify-between py-2 text-sm">
                 <div>
                   <p className="font-semibold">#{s.number} · {s.channel}</p>
-                  <p className="text-xs text-gray-500">{fmtDate(s.date)} · {s.payment}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">{fmtDate(s.date)} · {s.payment}</p>
                 </div>
                 <span className={`font-bold ${s.status === "anulada" ? "text-gray-400 line-through" : ""}`}>{formatCOP(s.total)}</span>
               </li>
@@ -164,7 +164,7 @@ export default function Dashboard() {
         </Card>
       </div>
 
-      <p className="mt-6 flex items-center gap-2 text-xs text-gray-500">
+      <p className="mt-6 flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
         <Boxes className="size-4" /> Los datos actuales son de prueba y se guardan solo en este navegador.
       </p>
     </>

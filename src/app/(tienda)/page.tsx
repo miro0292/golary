@@ -72,14 +72,18 @@ export default function Home() {
       <ProductRail title="Novedades" products={newArrivals()} />
       <ProductRail title="Ofertas" products={onSale()} href="/ofertas" />
 
-      <section className="mx-auto max-w-7xl px-4 py-10">
+      <section id="historia" className="mx-auto max-w-7xl scroll-mt-28 px-4 py-10">
         <div className="grid items-center gap-8 overflow-hidden rounded-xl bg-brand-light transition-colors duration-300 dark:bg-ink-soft md:grid-cols-2">
           <div className="p-8 md:p-12">
-            <p className="text-xs font-bold uppercase tracking-widest text-brand-dark dark:text-brand">Nuestra historia</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-dark dark:text-brand">Nuestra empresa</p>
             <h2 className="mt-2 font-display text-4xl font-extrabold uppercase leading-none">De nuestra fábrica a tu cancha</h2>
+            <p className="mt-4 font-display text-xl italic leading-snug text-ink dark:text-white">
+              “Inspirarte y acompañarte, mientras disfrutas tu deporte favorito y buscas ser mejor día a día.”
+            </p>
             <p className="mt-4 text-gray-700 dark:text-gray-300">
-              En Golary diseñamos y fabricamos cada balón. Controlamos la calidad desde el material hasta la última
-              costura, para que juegues con un producto profesional a un precio justo.
+              Somos una marca colombiana que fabrica y comercializa artículos deportivos. Trabajamos con calidad e
+              innovación, con <b>calidad certificada</b> y alto nivel de personalización, entregando herramientas que
+              facilitan el entrenamiento a quienes practican un deporte o buscan un espacio de esparcimiento.
             </p>
             <Link href="/tienda" className="mt-6 inline-block rounded-full bg-ink px-6 py-3 text-sm font-bold uppercase text-white hover:bg-brand">
               Visita nuestra tienda

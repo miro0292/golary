@@ -5,7 +5,7 @@ import logo from "@/assets/logo-golary.png";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { MapPin, Menu, Search, ShoppingCart, User, X, ChevronRight } from "lucide-react";
+import { MapPin, Menu, Search, ShoppingCart, User, X, ChevronRight, Facebook, Instagram, Youtube } from "lucide-react";
 import { categories } from "@/lib/products";
 import { useCart } from "@/context/CartContext";
 import { STORE, formatCOP } from "@/lib/config";
@@ -15,6 +15,22 @@ const promos = [
   `Envío gratis en compras desde ${formatCOP(STORE.freeShippingFrom)}`,
   "Somos fabricantes: precio directo de fábrica",
   "¿Club, escuela o colegio? Pregunta por precios al por mayor",
+];
+
+// Redes sociales reales de Golary (tomadas de golary.co).
+const SOCIAL = [
+  { name: "X", href: "https://x.com/balones_golary", Icon: () => <span className="block text-[13px] font-bold leading-none">𝕏</span> },
+  { name: "Facebook", href: "https://www.facebook.com/balonesgolary", Icon: Facebook },
+  { name: "Instagram", href: "https://instagram.com/balonesgolary", Icon: Instagram },
+  { name: "YouTube", href: "https://youtube.com", Icon: Youtube },
+];
+
+const TOP_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "Nuestra Empresa", href: "/#historia" },
+  { label: "Productos", href: "/categoria/futbol" },
+  { label: "Distribuidores", href: "/por-mayor" },
+  { label: "Contacto", href: "/tienda" },
 ];
 
 function SearchBox({ className = "" }: { className?: string }) {
@@ -55,6 +71,20 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40">
+      <div className="hidden items-center justify-between border-b border-white/10 bg-[#0a0b18] px-6 py-1.5 text-white lg:flex">
+        <div className="flex items-center gap-3">
+          {SOCIAL.map(({ name, href, Icon }) => (
+            <a key={name} href={href} target="_blank" rel="noreferrer" aria-label={name} className="text-white/60 transition hover:text-brand">
+              <Icon className="size-3.5" />
+            </a>
+          ))}
+        </div>
+        <nav className="flex items-center gap-5 text-[11px] font-semibold uppercase tracking-wide text-white/60">
+          {TOP_LINKS.map((l) => (
+            <Link key={l.label} href={l.href} className="transition hover:text-white">{l.label}</Link>
+          ))}
+        </nav>
+      </div>
       <div className="bg-brand text-center text-xs font-semibold tracking-wide text-white sm:text-sm">
         <p key={promo} className="animate-[fadeIn_.4s_ease] px-4 py-2">{promos[promo]}</p>
       </div>

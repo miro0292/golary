@@ -49,16 +49,16 @@ export default function SalesPage() {
       </PageTitle>
 
       <div className="mb-4 grid grid-cols-3 gap-4">
-        <Card><p className="text-xs font-bold uppercase text-gray-500">Total vendido</p><p className="font-display text-2xl font-bold">{formatCOP(total)}</p></Card>
-        <Card><p className="text-xs font-bold uppercase text-gray-500">Ventas</p><p className="font-display text-2xl font-bold">{paid.length}</p></Card>
-        <Card><p className="text-xs font-bold uppercase text-gray-500">Unidades</p><p className="font-display text-2xl font-bold">{units}</p></Card>
+        <Card><p className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Total vendido</p><p className="font-display text-2xl font-bold">{formatCOP(total)}</p></Card>
+        <Card><p className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Ventas</p><p className="font-display text-2xl font-bold">{paid.length}</p></Card>
+        <Card><p className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Unidades</p><p className="font-display text-2xl font-bold">{units}</p></Card>
       </div>
 
       <Card className="p-0">
-        <div className="flex flex-wrap gap-3 border-b p-4">
-          <div className="flex flex-wrap gap-1 rounded-lg bg-gray-100 p-1">
+        <div className="flex flex-wrap gap-3 border-b p-4 dark:border-white/10">
+          <div className="flex flex-wrap gap-1 rounded-lg bg-gray-100 p-1 dark:bg-white/5">
             {Object.entries(RANGES).map(([k, v]) => (
-              <button key={k} onClick={() => setRange(k as keyof typeof RANGES)} className={`rounded-md px-3 py-1.5 text-sm font-semibold ${range === k ? "bg-white shadow" : "text-gray-600"}`}>{v}</button>
+              <button key={k} onClick={() => setRange(k as keyof typeof RANGES)} className={`rounded-md px-3 py-1.5 text-sm font-semibold ${range === k ? "bg-white shadow dark:bg-white/15" : "text-gray-600 dark:text-gray-400"}`}>{v}</button>
             ))}
           </div>
           <select value={channel} onChange={(e) => setChannel(e.target.value)} className={`${input} w-auto`}>
@@ -68,7 +68,7 @@ export default function SalesPage() {
         </div>
         <div className="overflow-x-auto">
           <table className="w-full min-w-[720px] text-sm">
-            <thead className="bg-gray-50 text-left text-xs uppercase tracking-wide text-gray-500">
+            <thead className="bg-gray-50 text-left text-xs uppercase tracking-wide text-gray-500 dark:bg-white/5 dark:text-gray-400">
               <tr>
                 <th className="px-4 py-3">#</th>
                 <th className="px-4 py-3">Fecha</th>
@@ -83,22 +83,22 @@ export default function SalesPage() {
             <tbody className="divide-y">
               {list.map((s) => (
                 <Fragment key={s.id}>
-                  <tr className="cursor-pointer hover:bg-gray-50" onClick={() => setOpen(open === s.id ? null : s.id)}>
+                  <tr className="cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5" onClick={() => setOpen(open === s.id ? null : s.id)}>
                     <td className="px-4 py-3 font-semibold">{s.number}</td>
-                    <td className="whitespace-nowrap px-4 py-3 text-gray-600">{fmtDate(s.date)}</td>
+                    <td className="whitespace-nowrap px-4 py-3 text-gray-600 dark:text-gray-300">{fmtDate(s.date)}</td>
                     <td className="px-4 py-3">{s.channel}</td>
                     <td className="px-4 py-3">{s.payment}</td>
-                    <td className="px-4 py-3 text-gray-600">{s.customer ?? "—"}</td>
+                    <td className="px-4 py-3 text-gray-600 dark:text-gray-300">{s.customer ?? "—"}</td>
                     <td className={`px-4 py-3 text-right font-bold ${s.status === "anulada" ? "text-gray-400 line-through" : ""}`}>{formatCOP(s.total)}</td>
                     <td className="px-4 py-3">
-                      <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${s.status === "pagada" ? "bg-green-100 text-green-800" : "bg-gray-200 text-gray-600"}`}>
+                      <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${s.status === "pagada" ? "bg-green-100 text-green-800 dark:bg-green-400/15 dark:text-green-300" : "bg-gray-200 text-gray-600 dark:bg-white/10 dark:text-gray-300"}`}>
                         {s.status === "pagada" ? "Pagada" : "Anulada"}
                       </span>
                     </td>
                     <td className="px-4 py-3"><ChevronDown className={`size-4 transition ${open === s.id ? "rotate-180" : ""}`} /></td>
                   </tr>
                   {open === s.id && (
-                    <tr className="bg-gray-50">
+                    <tr className="bg-gray-50 dark:bg-white/5">
                       <td colSpan={8} className="px-4 py-3">
                         <ul className="space-y-1">
                           {s.items.map((i, n) => (
@@ -107,7 +107,7 @@ export default function SalesPage() {
                               <span className="font-semibold">{formatCOP(i.qty * i.price)}</span>
                             </li>
                           ))}
-                          {s.discount > 0 && <li className="flex justify-between text-gray-600"><span>Descuento</span><span>-{formatCOP(s.discount)}</span></li>}
+                          {s.discount > 0 && <li className="flex justify-between text-gray-600 dark:text-gray-300"><span>Descuento</span><span>-{formatCOP(s.discount)}</span></li>}
                         </ul>
                         {s.status === "pagada" && (
                           <button
@@ -124,7 +124,7 @@ export default function SalesPage() {
               ))}
             </tbody>
           </table>
-          {list.length === 0 && <p className="p-8 text-center text-gray-500">No hay ventas en este periodo.</p>}
+          {list.length === 0 && <p className="p-8 text-center text-gray-500 dark:text-gray-400">No hay ventas en este periodo.</p>}
         </div>
       </Card>
     </>

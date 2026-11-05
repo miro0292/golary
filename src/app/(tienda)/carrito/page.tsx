@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { CreditCard, MessageCircle, ShoppingBag, Trash2 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { QtyControl } from "@/components/CartDrawer";
@@ -34,8 +35,12 @@ export default function CartPage() {
         <ul className="divide-y rounded-xl ring-1 ring-gray-200 dark:divide-white/10 dark:ring-white/10">
           {lines.map((l) => (
             <li key={`${l.slug}-${l.size}`} className="flex gap-4 p-4">
-              <Link href={`/producto/${l.slug}`} className="size-24 shrink-0 rounded-lg bg-gray-100 p-3 dark:bg-white/5">
-                <BallArt kind={l.product.kind} colors={l.product.colors} className="size-full" />
+              <Link href={`/producto/${l.slug}`} className="relative size-24 shrink-0 overflow-hidden rounded-lg bg-gray-100 dark:bg-white/5">
+                {l.product.image ? (
+                  <Image src={l.product.image} alt={l.product.name} fill sizes="96px" className="object-cover" />
+                ) : (
+                  <BallArt kind={l.product.kind} colors={l.product.colors} className="size-full p-3" />
+                )}
               </Link>
               <div className="flex flex-1 flex-col gap-1">
                 <Link href={`/producto/${l.slug}`} className="font-semibold hover:text-brand">{l.product.name}</Link>

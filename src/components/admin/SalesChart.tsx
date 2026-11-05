@@ -15,9 +15,9 @@ export default function SalesChart({ data }: { data: { label: string; value: num
         <div className="flex flex-col-reverse justify-between pb-6 text-right text-[11px] text-gray-400">
           {ticks.map((t) => <span key={t}>{t >= 1_000_000 ? `${(t / 1_000_000).toFixed(1)}M` : `${Math.round(t / 1000)}k`}</span>)}
         </div>
-        <div className="relative flex flex-1 items-end gap-[2px] border-b border-gray-200 pb-0" style={{ marginBottom: 24 }}>
+        <div className="relative flex flex-1 items-end gap-[2px] border-b border-gray-200 pb-0 dark:border-white/10" style={{ marginBottom: 24 }}>
           {[0.5, 1].map((f) => (
-            <div key={f} className="pointer-events-none absolute inset-x-0 border-t border-dashed border-gray-100" style={{ bottom: `${f * 100}%` }} />
+            <div key={f} className="pointer-events-none absolute inset-x-0 border-t border-dashed border-gray-100 dark:border-white/10" style={{ bottom: `${f * 100}%` }} />
           ))}
           {data.map((d, i) => (
             <div
