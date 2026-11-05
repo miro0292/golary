@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# notas personales (credenciales, apuntes sueltos) — nunca a un repo público
+/datos.txt
+/notas*.txt

@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { useBallTexture, defaultLogoTransform, type LogoTransform } from "@/lib/configurator/useBallTexture";
+import { useBumpTexture } from "@/lib/configurator/useBumpTexture";
 import { getPreset, type PresetId } from "@/lib/configurator/presets";
 import ControlPanel from "./ControlPanel";
 import { STORE } from "@/lib/config";
@@ -29,6 +30,7 @@ export default function BallConfigurator() {
   const [saved, setSaved] = useState(false);
 
   const { texture } = useBallTexture(presetId, logo, transform);
+  const bumpTexture = useBumpTexture();
   const canvasEl = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -103,6 +105,7 @@ export default function BallConfigurator() {
         {texture && (
           <BallScene
             texture={texture}
+            bumpTexture={bumpTexture}
             spinning={spinning}
             onReady={(c) => {
               canvasEl.current = c;

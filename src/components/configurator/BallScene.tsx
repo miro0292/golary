@@ -16,10 +16,12 @@ function Loader() {
 
 export default function BallScene({
   texture,
+  bumpTexture,
   spinning,
   onReady,
 }: {
   texture: THREE.CanvasTexture;
+  bumpTexture: THREE.CanvasTexture | null;
   spinning: boolean;
   onReady?: (canvas: HTMLCanvasElement) => void;
 }) {
@@ -42,9 +44,10 @@ export default function BallScene({
       />
       <directionalLight position={[-3, -1, -2]} intensity={0.35} />
       <directionalLight position={[0, 2, -4]} intensity={0.25} color="#00a8e8" />
+      <pointLight position={[-2, 1.5, 3]} intensity={0.4} />
 
       <Suspense fallback={<Loader />}>
-        <BallMesh texture={texture} spinning={spinning} />
+        <BallMesh texture={texture} bumpTexture={bumpTexture} spinning={spinning} />
       </Suspense>
 
       <ContactShadows position={[0, -1.08, 0]} opacity={0.5} scale={6} blur={2.4} far={2} />
