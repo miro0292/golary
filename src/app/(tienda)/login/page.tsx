@@ -31,10 +31,10 @@ export default function LoginPage() {
           </div>
           <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="space-y-4">
             {tab === "registro" && (
-              <input required placeholder="Nombre completo" className="w-full rounded-lg px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-white/5 dark:ring-white/15" />
+              <input required placeholder="Nombre completo" className="w-full rounded-lg px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-white/5 dark:text-white dark:ring-white/15" />
             )}
-            <input required type="email" placeholder="Correo electrónico" className="w-full rounded-lg px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-white/5 dark:ring-white/15" />
-            <input required type="password" placeholder="Contraseña" className="w-full rounded-lg px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-white/5 dark:ring-white/15" />
+            <input required type="email" placeholder="Correo electrónico" className="w-full rounded-lg px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-white/5 dark:text-white dark:ring-white/15" />
+            <input required type="password" placeholder="Contraseña" className="w-full rounded-lg px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-white/5 dark:text-white dark:ring-white/15" />
             <button className="w-full rounded-full bg-brand py-3 font-bold uppercase text-white hover:bg-brand-dark">
               {tab === "login" ? "Ingresar" : "Crear cuenta"}
             </button>

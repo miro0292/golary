@@ -145,7 +145,7 @@ export default function NewSalePage() {
                       <input
                         type="number" min={0} step={100} value={i.price}
                         onChange={(e) => update(idx, { price: Math.max(0, Number(e.target.value)) })}
-                        className="w-28 rounded-lg px-2 py-1 text-sm ring-1 ring-gray-300 outline-none focus:ring-brand dark:bg-ink dark:ring-white/15"
+                        className="w-28 rounded-lg px-2 py-1 text-sm ring-1 ring-gray-300 outline-none focus:ring-brand dark:bg-ink dark:text-white dark:ring-white/15"
                         title="Precio unitario (puedes ajustarlo para ventas al por mayor)"
                       />
                       <span className="ml-auto text-sm font-bold">{formatCOP(i.qty * i.price)}</span>

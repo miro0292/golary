@@ -28,8 +28,8 @@ export default function AdminLogin() {
             <Lock className="size-5 text-brand" />
             <h1 className="font-display text-2xl font-bold uppercase">Panel de administración</h1>
           </div>
-          <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required placeholder="Correo" className="w-full rounded-lg bg-white px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-ink dark:ring-white/15" />
-          <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" required placeholder="Contraseña" className="w-full rounded-lg bg-white px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-ink dark:ring-white/15" />
+          <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" required placeholder="Correo" className="w-full rounded-lg bg-white px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-ink dark:text-white dark:ring-white/15" />
+          <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" required placeholder="Contraseña" className="w-full rounded-lg bg-white px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-ink dark:text-white dark:ring-white/15" />
           {error && <p className="text-sm font-semibold text-sale">Correo o contraseña incorrectos.</p>}
           <button className="w-full rounded-full bg-brand py-3 font-bold uppercase text-white hover:bg-brand-dark">Ingresar</button>
           <button

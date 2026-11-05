@@ -32,7 +32,7 @@ export const btn = {
   ghost: "inline-flex items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-semibold ring-1 ring-gray-300 hover:bg-gray-50 dark:bg-ink-soft dark:ring-white/15 dark:hover:bg-white/5",
 };
 
-export const input = "w-full rounded-lg bg-white px-3 py-2.5 text-sm ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-ink dark:ring-white/15";
+export const input = "w-full rounded-lg bg-white px-3 py-2.5 text-sm text-ink ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-ink dark:text-white dark:ring-white/15";
 export const label = "mb-1 block text-xs font-bold uppercase tracking-wide text-gray-600 dark:text-gray-400";
 
 export function fmtDate(iso: string, withTime = true) {

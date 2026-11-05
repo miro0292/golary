@@ -58,7 +58,7 @@ export default function ProductGrid({ products }: { products: Product[] }) {
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value as keyof typeof sorts)}
-            className="rounded-full bg-white px-4 py-2 text-sm ring-1 ring-gray-300 outline-none focus:ring-brand dark:bg-ink-soft dark:ring-white/20"
+            className="rounded-full bg-white px-4 py-2 text-sm ring-1 ring-gray-300 outline-none focus:ring-brand dark:bg-ink-soft dark:text-white dark:ring-white/20"
           >
             {Object.entries(sorts).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
           </select>
