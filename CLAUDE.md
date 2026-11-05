@@ -71,13 +71,17 @@ npm run build        # genera el sitio estático en out/
 | `src/lib/admin/` | `types.ts` (modelo), `seed.ts` (datos de prueba), `demo-auth.ts` (acceso de prueba) |
 | `src/lib/config.ts` | WhatsApp, correo, envío gratis desde $200.000, `formatCOP` |
 | `supabase/schema.sql` | Esquema de base de datos para la siguiente fase |
+| `src/app/(tienda)/personalizar/` | **Configurador 3D** ("Personaliza tu balón", enlazado en el header con badge "Nuevo") |
+| `src/components/configurator/` | `BallConfigurator` (estado + subir logo + guardar/WhatsApp), `BallScene` (Canvas R3F, luces, sombras, `OrbitControls`), `BallMesh` (esfera procedural con la textura), `BallMeshGLTF` (alternativa para un modelo .glb real, ver comentario del archivo), `ControlPanel` (UI) |
+| `src/lib/configurator/` | `presets.ts` (5 diseños base dibujados con Canvas 2D: Clásico, Rayas, Paneles, Neón, Cuero), `useBallTexture.ts` (compone diseño base + logo en un canvas → `THREE.CanvasTexture`) |
 
 ## Estado actual (prototipo)
 
 Hecho:
 - Tienda completa con carrito; el pago en línea está deshabilitado y se ofrece **"Pedir por WhatsApp"** con el pedido armado.
 - Panel admin: resumen (KPIs, ventas 14 días, por canal, stock bajo, más vendidos), productos (CRUD, costo y margen), inventario **por talla** (entrada / salida / ajuste por conteo + historial), registro manual de ventas tipo punto de venta (descuenta stock, anula y devuelve stock, exporta CSV).
-- **Tema claro/oscuro**: botón en el header de la tienda y en la barra del panel admin (`ThemeToggle.tsx` + `context/ThemeContext.tsx`). Usa `<html data-theme="dark">` + la variante `@custom-variant dark` en `globals.css`, con un script inline en `layout.tsx` que evita el parpadeo al cargar. Se eligió oscuro = tonos de "ink"/"ink-soft", el azul de marca no cambia. Cobertura: toda la tienda pública; en el admin, el fondo general, la barra superior y las tarjetas (`ui.tsx`/`Card`) — algunas tablas internas de `productos`/`inventario`/`ventas` pueden conservar tonos claros.
+- **Tema claro/oscuro**: botón en el header de la tienda y en la barra del panel admin (`ThemeToggle.tsx` + `context/ThemeContext.tsx`). Usa `<html data-theme="dark">` + la variante `@custom-variant dark` en `globals.css`, con un script inline en `layout.tsx` que evita el parpadeo al cargar. Se eligió oscuro = tonos de "ink"/"ink-soft", el azul de marca no cambia. Cobertura completa: toda la tienda pública y el panel admin (títulos, tarjetas, tablas e inputs llevan el color de texto explícito — no basta con heredarlo del `body`, hay que ponerlo en cada pieza).
+- **Configurador 3D "Personaliza tu balón"** (`/personalizar`): balón esférico procedural (no depende de ningún archivo .glb) con Three.js + React Three Fiber v9 + drei v10 (**ojo:** v8/v9 de R3F — React 19 necesita v9, v8 rompe el build por los tipos de JSX). La textura (diseño base + logo del usuario) se compone en un `<canvas>` 2D normal y se sube como `THREE.CanvasTexture`; cambiar el diseño base nunca mueve el logo porque ambos se redibujan juntos a partir del mismo estado. "Guardar diseño" hace `canvas.toDataURL()` sobre el `<canvas>` de WebGL (por eso el `Canvas` de R3F lleva `preserveDrawingBuffer: true`) y descarga un PNG; como no hay checkout para productos personalizados, "Añadir al carrito" en realidad abre WhatsApp con un resumen del diseño. Si más adelante quieren un modelo 3D real de balón (.glb), `BallMeshGLTF.tsx` ya está listo para recibirlo (ver el comentario del archivo).
 
 Limitaciones conocidas (todas a resolver en la Fase de base de datos):
 - El panel guarda datos **solo en el navegador** (localStorage) y arranca con datos de prueba.

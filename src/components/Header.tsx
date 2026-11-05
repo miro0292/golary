@@ -5,7 +5,7 @@ import logo from "@/assets/logo-golary.png";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { MapPin, Menu, Search, ShoppingCart, User, X, ChevronRight, Facebook, Instagram, Youtube } from "lucide-react";
+import { MapPin, Menu, Search, ShoppingCart, User, X, ChevronRight, Facebook, Instagram, Youtube, Sparkles } from "lucide-react";
 import { categories } from "@/lib/products";
 import { useCart } from "@/context/CartContext";
 import { STORE, formatCOP } from "@/lib/config";
@@ -136,6 +136,12 @@ export default function Header() {
             </li>
           ))}
           <li><Link href="/ofertas" className="block px-3 py-3 text-sale hover:underline">Ofertas</Link></li>
+          <li>
+            <Link href="/personalizar" className="flex items-center gap-1.5 px-3 py-3 text-brand hover:underline">
+              <Sparkles className="size-3.5" /> Personaliza tu balón
+              <span className="rounded-full bg-sale px-1.5 py-0.5 text-[10px] text-white">Nuevo</span>
+            </Link>
+          </li>
           <li className="ml-auto"><Link href="/por-mayor" className="block rounded-full bg-ink px-4 py-1.5 text-xs text-white hover:bg-brand">Clubes y por mayor</Link></li>
         </ul>
       </nav>
@@ -157,6 +163,12 @@ export default function Header() {
               </li>
             ))}
             <li><Link href="/ofertas" className="block px-5 py-4 text-sale">Ofertas</Link></li>
+            <li>
+              <Link href="/personalizar" className="flex items-center gap-2 px-5 py-4 text-brand">
+                <Sparkles className="size-4" /> Personaliza tu balón
+                <span className="rounded-full bg-sale px-1.5 py-0.5 text-[10px] text-white">Nuevo</span>
+              </Link>
+            </li>
             <li><Link href="/por-mayor" className="block px-5 py-4">Clubes y por mayor</Link></li>
             <li><Link href="/tienda" className="block px-5 py-4">Nuestra tienda</Link></li>
           </ul>
