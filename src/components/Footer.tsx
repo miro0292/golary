@@ -1,7 +1,7 @@
 import Image from "next/image";
 import logo from "@/assets/logo-golary.png";
 import Link from "next/link";
-import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Lock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { categories } from "@/lib/products";
 import { STORE } from "@/lib/config";
 
@@ -69,9 +69,17 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/10 py-5 text-center text-xs text-gray-500">
-        © {new Date().getFullYear()} Golary® · Tienda Deportiva · Hecho en Colombia ·{" "}
-        <Link href="/admin" className="hover:text-brand">Administración</Link>
+      <div className="relative border-t border-white/10 py-5 text-center text-xs text-gray-500">
+        © {new Date().getFullYear()} Golary® · Tienda Deportiva · Hecho en Colombia
+        {/* Acceso discreto al panel: solo para el equipo, sin anunciarlo a los compradores. */}
+        <Link
+          href="/admin"
+          aria-label="Acceso del equipo"
+          title="Acceso del equipo"
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-700 opacity-60 transition hover:text-brand hover:opacity-100 dark:text-gray-600"
+        >
+          <Lock className="size-3.5" />
+        </Link>
       </div>
     </footer>
   );
