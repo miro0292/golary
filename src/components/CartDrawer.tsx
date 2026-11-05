@@ -31,7 +31,7 @@ export default function CartDrawer() {
       <div className={`absolute inset-0 bg-black/50 transition-opacity ${isOpen ? "opacity-100" : "opacity-0"}`} onClick={close} />
       <aside className={`absolute inset-y-0 right-0 flex w-full max-w-md flex-col bg-white shadow-2xl transition-transform dark:bg-ink-soft ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
         <div className="flex items-center justify-between border-b p-4 dark:border-white/10">
-          <h2 className="font-display text-xl font-bold uppercase">Tu carrito</h2>
+          <h2 className="font-display text-xl font-bold uppercase text-ink dark:text-white">Tu carrito</h2>
           <button onClick={close} aria-label="Cerrar carrito"><X /></button>
         </div>
 

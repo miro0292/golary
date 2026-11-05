@@ -25,7 +25,7 @@ export default function Home() {
             <div key={title} className="flex items-center gap-3">
               <Icon className="size-8 shrink-0 text-brand" />
               <div>
-                <p className="text-sm font-bold">{title}</p>
+                <p className="text-sm font-bold text-ink dark:text-white">{title}</p>
                 <p className="text-xs text-gray-500 dark:text-gray-400">{text}</p>
               </div>
             </div>
@@ -34,7 +34,7 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-10">
-        <h2 className="mb-6 font-display text-3xl font-bold uppercase">Compra por deporte</h2>
+        <h2 className="mb-6 font-display text-3xl font-bold uppercase text-ink dark:text-white">Compra por deporte</h2>
         <div className="no-scrollbar -mx-4 flex gap-4 overflow-x-auto px-4 md:grid md:grid-cols-6">
           {categories.map((c) => {
             const sample = products.find((p) => p.category === c.slug)!;
@@ -43,7 +43,7 @@ export default function Home() {
                 <div className="grid aspect-square w-full place-items-center rounded-full p-5 transition group-hover:scale-105" style={{ background: `${c.accent}1f` }}>
                   <BallArt kind={sample.kind} colors={sample.colors} className="size-full transition duration-500 group-hover:rotate-45" />
                 </div>
-                <span className="text-sm font-bold uppercase tracking-wide group-hover:text-brand">{c.name}</span>
+                <span className="text-sm font-bold uppercase tracking-wide text-ink group-hover:text-brand dark:text-white">{c.name}</span>
               </Link>
             );
           })}
@@ -76,7 +76,7 @@ export default function Home() {
         <div className="grid items-center gap-8 overflow-hidden rounded-xl bg-brand-light transition-colors duration-300 dark:bg-ink-soft md:grid-cols-2">
           <div className="p-8 md:p-12">
             <p className="text-xs font-bold uppercase tracking-widest text-brand-dark dark:text-brand">Nuestra empresa</p>
-            <h2 className="mt-2 font-display text-4xl font-extrabold uppercase leading-none">De nuestra fábrica a tu cancha</h2>
+            <h2 className="mt-2 font-display text-4xl font-extrabold uppercase leading-none text-ink dark:text-white">De nuestra fábrica a tu cancha</h2>
             <p className="mt-4 font-display text-xl italic leading-snug text-ink dark:text-white">
               “Inspirarte y acompañarte, mientras disfrutas tu deporte favorito y buscas ser mejor día a día.”
             </p>

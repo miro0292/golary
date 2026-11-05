@@ -22,7 +22,7 @@ export default function CartPage() {
     return (
       <div className="mx-auto flex max-w-xl flex-col items-center gap-4 px-4 py-24 text-center">
         <ShoppingBag className="size-16 text-gray-300 dark:text-white/20" />
-        <h1 className="font-display text-3xl font-bold uppercase">Tu carrito está vacío</h1>
+        <h1 className="font-display text-3xl font-bold uppercase text-ink dark:text-white">Tu carrito está vacío</h1>
         <Link href="/" className="rounded-full bg-brand px-8 py-3 font-bold uppercase text-white hover:bg-brand-dark">Ir a la tienda</Link>
       </div>
     );
@@ -30,7 +30,7 @@ export default function CartPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10">
-      <h1 className="mb-6 font-display text-4xl font-extrabold uppercase">Tu carrito</h1>
+      <h1 className="mb-6 font-display text-4xl font-extrabold uppercase text-ink dark:text-white">Tu carrito</h1>
       <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
         <ul className="divide-y rounded-xl ring-1 ring-gray-200 dark:divide-white/10 dark:ring-white/10">
           {lines.map((l) => (
@@ -58,7 +58,7 @@ export default function CartPage() {
         </ul>
 
         <aside className="h-fit space-y-4 rounded-xl bg-gray-50 p-6 dark:bg-white/5">
-          <h2 className="font-display text-2xl font-bold uppercase">Resumen</h2>
+          <h2 className="font-display text-2xl font-bold uppercase text-ink dark:text-white">Resumen</h2>
           <div className="space-y-2 text-sm">
             <div className="flex justify-between"><span>Subtotal</span><span>{formatCOP(total)}</span></div>
             <div className="flex justify-between"><span>Envío</span><span>{shipping ? formatCOP(shipping) : "Gratis"}</span></div>

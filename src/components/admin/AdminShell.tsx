@@ -78,7 +78,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   );
 
   return (
-    <div className="min-h-screen bg-gray-100 transition-colors duration-300 dark:bg-ink">
+    <div className="min-h-screen bg-gray-100 text-ink transition-colors duration-300 dark:bg-ink dark:text-white">
       <aside className="fixed inset-y-0 left-0 hidden w-60 lg:block">{sidebar}</aside>
       <div className={`fixed inset-0 z-50 lg:hidden ${open ? "" : "pointer-events-none"}`}>
         <div className={`absolute inset-0 bg-black/50 transition-opacity ${open ? "opacity-100" : "opacity-0"}`} onClick={() => setOpen(false)} />
@@ -91,7 +91,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
           <span className="rounded bg-yellow-100 px-2 py-0.5 text-[11px] font-bold uppercase text-yellow-800 dark:bg-yellow-400/20 dark:text-yellow-300">Modo prueba</span>
           <ThemeToggle compact className="ml-2 ring-gray-300 hover:bg-gray-100 dark:ring-white/15 dark:hover:bg-white/5" />
           <div className="ml-auto text-right text-sm">
-            <p className="font-semibold">{user.name}</p>
+            <p className="font-semibold text-ink dark:text-white">{user.name}</p>
             <p className="text-xs text-gray-500 dark:text-gray-400">{user.email}</p>
           </div>
         </header>

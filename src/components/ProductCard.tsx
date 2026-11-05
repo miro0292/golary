@@ -39,12 +39,12 @@ export default function ProductCard({ product }: { product: Product }) {
       </div>
       <div className="flex flex-1 flex-col gap-1 p-4">
         <p className="text-xs font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400">Golary</p>
-        <h3 className="line-clamp-2 text-sm font-semibold leading-snug">{product.name}</h3>
+        <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-ink dark:text-white">{product.name}</h3>
         <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
           <Star className="size-3.5 fill-yellow-400 text-yellow-400" /> {product.rating} ({product.reviews})
         </div>
         <div className="mt-auto flex items-baseline gap-2 pt-2">
-          <span className={`font-display text-xl font-bold ${product.oldPrice ? "text-sale" : ""}`}>{formatCOP(product.price)}</span>
+          <span className={`font-display text-xl font-bold ${product.oldPrice ? "text-sale" : "text-ink dark:text-white"}`}>{formatCOP(product.price)}</span>
           {product.oldPrice && <span className="text-xs text-gray-400 line-through">{formatCOP(product.oldPrice)}</span>}
         </div>
       </div>

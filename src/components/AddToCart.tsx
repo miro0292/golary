@@ -15,7 +15,7 @@ export default function AddToCart({ product }: { product: Product }) {
   return (
     <div className="space-y-5">
       <div>
-        <p className="mb-2 text-sm font-bold uppercase">
+        <p className="mb-2 text-sm font-bold uppercase text-ink dark:text-white">
           Talla {error && <span className="ml-2 font-semibold normal-case text-sale">Selecciona una talla</span>}
         </p>
         <div className="flex flex-wrap gap-2">

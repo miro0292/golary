@@ -33,7 +33,7 @@ export default function ProductGrid({ products }: { products: Product[] }) {
     <div className="grid gap-8 lg:grid-cols-[220px_1fr]">
       <aside className="space-y-6">
         <div>
-          <h3 className="mb-3 text-sm font-bold uppercase">Talla</h3>
+          <h3 className="mb-3 text-sm font-bold uppercase text-ink dark:text-white">Talla</h3>
           <div className="flex flex-wrap gap-2">
             {sizes.map((s) => (
               <button
@@ -46,7 +46,7 @@ export default function ProductGrid({ products }: { products: Product[] }) {
             ))}
           </div>
         </div>
-        <label className="flex cursor-pointer items-center gap-2 text-sm font-semibold">
+        <label className="flex cursor-pointer items-center gap-2 text-sm font-semibold text-ink dark:text-white">
           <input type="checkbox" checked={saleOnly} onChange={(e) => setSaleOnly(e.target.checked)} className="size-4 accent-brand" />
           Solo ofertas
         </label>

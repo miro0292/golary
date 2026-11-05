@@ -6,7 +6,7 @@ export function PageTitle({ title, subtitle, children }: { title: string; subtit
   return (
     <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
       <div>
-        <h1 className="font-display text-3xl font-bold uppercase">{title}</h1>
+        <h1 className="font-display text-3xl font-bold uppercase text-ink dark:text-white">{title}</h1>
         {subtitle && <p className="text-sm text-gray-500 dark:text-gray-400">{subtitle}</p>}
       </div>
       {children && <div className="flex flex-wrap gap-2">{children}</div>}
@@ -15,7 +15,7 @@ export function PageTitle({ title, subtitle, children }: { title: string; subtit
 }
 
 export function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <div className={`rounded-xl bg-white p-5 shadow-sm ring-1 ring-gray-200 dark:bg-ink-soft dark:ring-white/10 ${className}`}>{children}</div>;
+  return <div className={`rounded-xl bg-white p-5 text-ink shadow-sm ring-1 ring-gray-200 dark:bg-ink-soft dark:text-white dark:ring-white/10 ${className}`}>{children}</div>;
 }
 
 export function Thumb({ p, size = "size-10" }: { p: Pick<AdminProduct, "kind" | "colors">; size?: string }) {

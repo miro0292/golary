@@ -21,7 +21,7 @@ export default function WholesalePage() {
           ].map(({ icon: Icon, title, text }) => (
             <div key={title} className="rounded-xl bg-gray-50 p-6 dark:bg-white/5">
               <Icon className="size-8 text-brand" />
-              <h2 className="mt-3 font-display text-2xl font-bold uppercase">{title}</h2>
+              <h2 className="mt-3 font-display text-2xl font-bold uppercase text-ink dark:text-white">{title}</h2>
               <p className="mt-1 text-gray-600 dark:text-gray-300">{text}</p>
             </div>
           ))}

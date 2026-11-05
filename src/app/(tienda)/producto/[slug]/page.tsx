@@ -77,7 +77,7 @@ export default async function ProductPage({ params }: Props) {
 
           <div>
             <p className="text-sm font-bold uppercase tracking-wide text-brand-dark dark:text-brand">Golary · {cat.name}</p>
-            <h1 className="mt-1 font-display text-4xl font-extrabold uppercase leading-tight">{p.name}</h1>
+            <h1 className="mt-1 font-display text-4xl font-extrabold uppercase leading-tight text-ink dark:text-white">{p.name}</h1>
             <div className="mt-2 flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
               <span className="flex">
                 {Array.from({ length: 5 }, (_, i) => (
@@ -106,7 +106,7 @@ export default async function ProductPage({ params }: Props) {
             </ul>
 
             <div className="mt-8">
-              <h2 className="mb-3 font-display text-xl font-bold uppercase">Características</h2>
+              <h2 className="mb-3 font-display text-xl font-bold uppercase text-ink dark:text-white">Características</h2>
               <ul className="grid gap-2 sm:grid-cols-2">
                 {p.features.map((f) => (
                   <li key={f} className="flex items-center gap-2 text-sm"><Check className="size-4 text-brand" /> {f}</li>
