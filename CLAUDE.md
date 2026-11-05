@@ -8,12 +8,17 @@
 - **Golary®** es una marca colombiana que **fabrica balones** y artículos deportivos. Tiene fábrica propia y pronto abrirá su **primer local físico**.
 - El dueño se comunica en **español**: responde siempre en español, explicando claramente y sin tecnicismos innecesarios. No es programador.
 - Sitio actual (viejo, en WordPress): https://golary.co — se reemplazará por este proyecto.
-- Inspiración de diseño: **Decathlon Colombia** (decathlon.com.co). Se toma la *estructura* (barra promocional, navegación por deporte, carruseles, tarjetas de producto), **nunca** su marca, logo ni textos.
-- Categorías: Fútbol, Futsal, Voleibol, Baloncesto, Microfútbol, Importados.
+- Inspiración de diseño: **Decathlon Colombia** (decathlon.com.co) para la estructura general de la tienda, y el **propio golary.co** (su sitio actual) para el hero/panel principal — fondo cósmico oscuro, balón con resplandor, lista de características con hexágonos. Nunca se copia marca/logo ajenos.
+- Categorías: Fútbol, Futsal, Voleibol, Baloncesto, Microfútbol, Importados ("Importados" son de **otras marcas**: nunca llevan fotos ni el logo Golary).
 - Canales de venta: Local, WhatsApp, Web, Por mayor (clubes, escuelas, colegios — balones personalizados con escudo).
 - Medios de pago en Colombia: Efectivo, Transferencia, Nequi, Daviplata, Tarjeta. Moneda **COP sin decimales** (`formatCOP` en `src/lib/config.ts`).
-- Aún **no hay fotos reales** de producto: cada producto se dibuja con el componente `BallArt` (SVG según tipo de balón y sus 2 colores), salvo unos pocos que ya tienen una foto de EJEMPLO (ver abajo).
-- **Fotos de ejemplo:** en `src/assets/products/` (imágenes de ejemplo/IA que el dueño proporcionó, no fotos reales del producto final). Un `Product` puede traer `image?: StaticImageData`; si existe, `ProductCard` y la ficha de producto la muestran en vez del `BallArt`, con un aviso tipo "Foto de ejemplo, aún no es el producto final". Para subir una foto nueva: colocar el archivo en esa carpeta, importarlo en `src/lib/products.ts` y asignarlo al `image` del producto correspondiente (reemplaza la de ejemplo cuando llegue la real).
+- **Contacto real** (tomado de golary.co, en `STORE` de `src/lib/config.ts`): dirección de fábrica/oficina en Bogotá, teléfonos, correo `gerenciacomercial@golary.co`. El **WhatsApp sigue siendo un número de prueba** (`STORE.whatsapp`): falta que el dueño confirme cuál de los teléfonos reales atiende pedidos.
+- Redes sociales reales (en la barra superior del header): X `@balones_golary`, Facebook `balonesgolary`, Instagram `@balonesgolary`, YouTube (solo se tiene el link genérico `youtube.com`, falta el canal exacto).
+- **Fotos de producto** — tres niveles, todo en `src/assets/products/` e importado en `src/lib/products.ts`:
+  1. **Reales** (`photoReal: true`): fotos de fábrica que cargó el dueño (`GOLARY-PRO-2.jpg`, `GOLARY-VOLLEIBALL-2.jpg`, `5ROCKYRJ2.jpg`, `pmxams3.jpg`, `ch1.jpg`, `chm2-1.jpg`; `images.jpg` quedó sin usar, es otra variante de "Rookie"). Los productos que las usan (Pro Max, Challenge, Profesional, Rookie, Soft Touch 3.0) ya tienen **nombre y precio alineados al catálogo real de golary.co** — no muestran el aviso de "foto de ejemplo".
+  2. **De ejemplo** (sin `photoReal`, posible IA/stock): `ejemplo-*.jpg`, repartidas por rotación (`examplePhotos` en `products.ts`) entre el resto de productos de Fútbol/Futsal/Voleibol/Baloncesto/Microfútbol. Si existe `image`, `ProductCard`/ficha de producto la muestran con el aviso "Foto de ejemplo, aún no es el producto final".
+  3. **Sin foto**: se dibuja con `BallArt` (SVG). Es el caso de "Importados" (a propósito) y cualquier producto nuevo sin imagen.
+  - Para subir una foto real nueva: colocarla en `src/assets/products/`, importarla en `products.ts`, asignarla a `image` del producto y poner `photoReal: true`.
 
 ## Identidad visual
 
