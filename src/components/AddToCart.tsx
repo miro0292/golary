@@ -23,7 +23,7 @@ export default function AddToCart({ product }: { product: Product }) {
             <button
               key={s}
               onClick={() => { setSize(s); setError(false); }}
-              className={`min-w-14 rounded px-4 py-2.5 font-semibold ring-1 transition ${size === s ? "bg-ink text-white ring-ink" : "ring-gray-300 hover:ring-ink"}`}
+              className={`min-w-14 rounded px-4 py-2.5 font-semibold ring-1 transition ${size === s ? "bg-ink text-white ring-ink dark:bg-white dark:text-ink dark:ring-white" : "ring-gray-300 hover:ring-ink dark:ring-white/20 dark:hover:ring-white"}`}
             >
               {s}
             </button>
@@ -36,7 +36,7 @@ export default function AddToCart({ product }: { product: Product }) {
       </p>
 
       <div className="flex gap-3">
-        <div className="inline-flex items-center rounded-full ring-1 ring-gray-300">
+        <div className="inline-flex items-center rounded-full ring-1 ring-gray-300 dark:ring-white/20">
           <button aria-label="Restar" className="grid size-12 place-items-center" onClick={() => setQty(Math.max(1, qty - 1))}><Minus className="size-4" /></button>
           <span className="w-8 text-center font-bold">{qty}</span>
           <button aria-label="Sumar" className="grid size-12 place-items-center" onClick={() => setQty(Math.min(product.stock, qty + 1))}><Plus className="size-4" /></button>

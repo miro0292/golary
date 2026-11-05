@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { BadgeCheck, Factory, ShieldCheck, Truck } from "lucide-react";
 import HeroCarousel from "@/components/HeroCarousel";
 import ProductRail from "@/components/ProductRail";
 import BallArt from "@/components/BallArt";
+import exhibicion from "@/assets/products/ejemplo-exhibicion-tienda.jpg";
 import { bestSellers, categories, newArrivals, onSale, products } from "@/lib/products";
 
 const benefits = [
@@ -17,14 +19,14 @@ export default function Home() {
     <>
       <HeroCarousel />
 
-      <section className="border-b border-gray-200 bg-white">
+      <section className="border-b border-gray-200 bg-white transition-colors duration-300 dark:border-white/10 dark:bg-ink">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 py-5 md:grid-cols-4">
           {benefits.map(({ icon: Icon, title, text }) => (
             <div key={title} className="flex items-center gap-3">
               <Icon className="size-8 shrink-0 text-brand" />
               <div>
                 <p className="text-sm font-bold">{title}</p>
-                <p className="text-xs text-gray-500">{text}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{text}</p>
               </div>
             </div>
           ))}
@@ -71,11 +73,11 @@ export default function Home() {
       <ProductRail title="Ofertas" products={onSale()} href="/ofertas" />
 
       <section className="mx-auto max-w-7xl px-4 py-10">
-        <div className="grid items-center gap-8 overflow-hidden rounded-xl bg-brand-light md:grid-cols-2">
+        <div className="grid items-center gap-8 overflow-hidden rounded-xl bg-brand-light transition-colors duration-300 dark:bg-ink-soft md:grid-cols-2">
           <div className="p-8 md:p-12">
-            <p className="text-xs font-bold uppercase tracking-widest text-brand-dark">Nuestra historia</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-dark dark:text-brand">Nuestra historia</p>
             <h2 className="mt-2 font-display text-4xl font-extrabold uppercase leading-none">De nuestra fábrica a tu cancha</h2>
-            <p className="mt-4 text-gray-700">
+            <p className="mt-4 text-gray-700 dark:text-gray-300">
               En Golary diseñamos y fabricamos cada balón. Controlamos la calidad desde el material hasta la última
               costura, para que juegues con un producto profesional a un precio justo.
             </p>
@@ -83,10 +85,9 @@ export default function Home() {
               Visita nuestra tienda
             </Link>
           </div>
-          <div className="flex h-full min-h-64 items-center justify-center gap-4 bg-ink p-8">
-            <BallArt kind="voleibol" colors={["#facc15", "#1d4ed8"]} className="w-24 md:w-32" />
-            <BallArt kind="futbol" colors={["#ffffff", "#00a8e8"]} className="w-32 md:w-44" />
-            <BallArt kind="baloncesto" colors={["#e8590c", "#111827"]} className="w-24 md:w-32" />
+          <div className="relative h-full min-h-64">
+            <Image src={exhibicion} alt="Exhibición de balones Golary (imagen de ejemplo)" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+            <span className="absolute bottom-3 right-3 rounded bg-black/60 px-2 py-1 text-[11px] text-white/80">Imagen de ejemplo</span>
           </div>
         </div>
       </section>

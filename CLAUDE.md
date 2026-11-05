@@ -12,7 +12,8 @@
 - Categorías: Fútbol, Futsal, Voleibol, Baloncesto, Microfútbol, Importados.
 - Canales de venta: Local, WhatsApp, Web, Por mayor (clubes, escuelas, colegios — balones personalizados con escudo).
 - Medios de pago en Colombia: Efectivo, Transferencia, Nequi, Daviplata, Tarjeta. Moneda **COP sin decimales** (`formatCOP` en `src/lib/config.ts`).
-- Aún **no hay fotos reales** de producto: cada producto se dibuja con el componente `BallArt` (SVG según tipo de balón y sus 2 colores).
+- Aún **no hay fotos reales** de producto: cada producto se dibuja con el componente `BallArt` (SVG según tipo de balón y sus 2 colores), salvo unos pocos que ya tienen una foto de EJEMPLO (ver abajo).
+- **Fotos de ejemplo:** en `src/assets/products/` (imágenes de ejemplo/IA que el dueño proporcionó, no fotos reales del producto final). Un `Product` puede traer `image?: StaticImageData`; si existe, `ProductCard` y la ficha de producto la muestran en vez del `BallArt`, con un aviso tipo "Foto de ejemplo, aún no es el producto final". Para subir una foto nueva: colocar el archivo en esa carpeta, importarlo en `src/lib/products.ts` y asignarlo al `image` del producto correspondiente (reemplaza la de ejemplo cuando llegue la real).
 
 ## Identidad visual
 
@@ -71,6 +72,7 @@ npm run build        # genera el sitio estático en out/
 Hecho:
 - Tienda completa con carrito; el pago en línea está deshabilitado y se ofrece **"Pedir por WhatsApp"** con el pedido armado.
 - Panel admin: resumen (KPIs, ventas 14 días, por canal, stock bajo, más vendidos), productos (CRUD, costo y margen), inventario **por talla** (entrada / salida / ajuste por conteo + historial), registro manual de ventas tipo punto de venta (descuenta stock, anula y devuelve stock, exporta CSV).
+- **Tema claro/oscuro**: botón en el header de la tienda y en la barra del panel admin (`ThemeToggle.tsx` + `context/ThemeContext.tsx`). Usa `<html data-theme="dark">` + la variante `@custom-variant dark` en `globals.css`, con un script inline en `layout.tsx` que evita el parpadeo al cargar. Se eligió oscuro = tonos de "ink"/"ink-soft", el azul de marca no cambia. Cobertura: toda la tienda pública; en el admin, el fondo general, la barra superior y las tarjetas (`ui.tsx`/`Card`) — algunas tablas internas de `productos`/`inventario`/`ventas` pueden conservar tonos claros.
 
 Limitaciones conocidas (todas a resolver en la Fase de base de datos):
 - El panel guarda datos **solo en el navegador** (localStorage) y arranca con datos de prueba.

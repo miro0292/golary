@@ -39,7 +39,7 @@ export default function ProductGrid({ products }: { products: Product[] }) {
               <button
                 key={s}
                 onClick={() => setSize(size === s ? null : s)}
-                className={`min-w-11 rounded px-3 py-1.5 text-sm font-semibold ring-1 ${size === s ? "bg-ink text-white ring-ink" : "ring-gray-300 hover:ring-ink"}`}
+                className={`min-w-11 rounded px-3 py-1.5 text-sm font-semibold ring-1 ${size === s ? "bg-ink text-white ring-ink dark:bg-white dark:text-ink dark:ring-white" : "ring-gray-300 hover:ring-ink dark:ring-white/20 dark:hover:ring-white"}`}
               >
                 {s}
               </button>
@@ -54,17 +54,17 @@ export default function ProductGrid({ products }: { products: Product[] }) {
 
       <div>
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <p className="text-sm text-gray-500">{list.length} productos</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">{list.length} productos</p>
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value as keyof typeof sorts)}
-            className="rounded-full px-4 py-2 text-sm ring-1 ring-gray-300 outline-none focus:ring-brand"
+            className="rounded-full bg-white px-4 py-2 text-sm ring-1 ring-gray-300 outline-none focus:ring-brand dark:bg-ink-soft dark:ring-white/20"
           >
             {Object.entries(sorts).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
           </select>
         </div>
         {list.length === 0 ? (
-          <p className="rounded-lg bg-gray-50 p-10 text-center text-gray-500">No hay productos con esos filtros.</p>
+          <p className="rounded-lg bg-gray-50 p-10 text-center text-gray-500 dark:bg-white/5 dark:text-gray-400">No hay productos con esos filtros.</p>
         ) : (
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4">
             {list.map((p) => <ProductCard key={p.id} product={p} />)}

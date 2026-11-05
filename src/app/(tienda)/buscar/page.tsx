@@ -16,7 +16,7 @@ function Results() {
         {results.length ? (
           <ProductGrid key={q} products={results} />
         ) : (
-          <p className="rounded-lg bg-gray-50 p-10 text-center text-gray-500">
+          <p className="rounded-lg bg-gray-50 p-10 text-center text-gray-500 dark:bg-white/5 dark:text-gray-400">
             No encontramos productos{q && <> para “{q}”</>}. Prueba con “fútbol”, “futsal” o “voleibol”.
           </p>
         )}

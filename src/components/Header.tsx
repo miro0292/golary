@@ -9,6 +9,7 @@ import { MapPin, Menu, Search, ShoppingCart, User, X, ChevronRight } from "lucid
 import { categories } from "@/lib/products";
 import { useCart } from "@/context/CartContext";
 import { STORE, formatCOP } from "@/lib/config";
+import ThemeToggle from "./ThemeToggle";
 
 const promos = [
   `Envío gratis en compras desde ${formatCOP(STORE.freeShippingFrom)}`,
@@ -68,6 +69,7 @@ export default function Header() {
           </Link>
           <SearchBox className="mx-auto hidden w-full max-w-xl md:block" />
           <nav className="ml-auto flex items-center gap-1 sm:gap-3 md:ml-0">
+            <ThemeToggle compact className="shrink-0 ring-white/20 hover:bg-white/10" />
             <Link href="/tienda" className="hidden flex-col items-center px-2 text-[11px] hover:text-brand lg:flex">
               <MapPin className="size-5" /> Nuestra tienda
             </Link>
@@ -89,7 +91,7 @@ export default function Header() {
         </div>
       </div>
 
-      <nav className="hidden border-b border-gray-200 bg-white lg:block">
+      <nav className="hidden border-b border-gray-200 bg-white transition-colors duration-300 dark:border-white/10 dark:bg-ink-soft lg:block">
         <ul className="mx-auto flex max-w-7xl items-center gap-1 px-4 text-sm font-semibold uppercase tracking-wide">
           {categories.map((c) => (
             <li key={c.slug}>
@@ -111,12 +113,12 @@ export default function Header() {
       {/* Menú móvil */}
       <div className={`fixed inset-0 z-50 lg:hidden ${menu ? "" : "pointer-events-none"}`}>
         <div className={`absolute inset-0 bg-black/50 transition-opacity ${menu ? "opacity-100" : "opacity-0"}`} onClick={() => setMenu(false)} />
-        <aside className={`absolute inset-y-0 left-0 w-80 max-w-[85%] bg-white transition-transform ${menu ? "translate-x-0" : "-translate-x-full"}`}>
+        <aside className={`absolute inset-y-0 left-0 w-80 max-w-[85%] bg-white transition-transform dark:bg-ink-soft ${menu ? "translate-x-0" : "-translate-x-full"}`}>
           <div className="flex items-center justify-between bg-ink p-4">
             <Image src={logo} alt="Golary" width={1211} height={392} className="h-9 w-auto" />
             <button onClick={() => setMenu(false)} aria-label="Cerrar menú" className="text-white"><X /></button>
           </div>
-          <ul className="divide-y divide-gray-100 font-semibold">
+          <ul className="divide-y divide-gray-100 font-semibold dark:divide-white/10">
             {categories.map((c) => (
               <li key={c.slug}>
                 <Link href={`/categoria/${c.slug}`} className="flex items-center justify-between px-5 py-4">

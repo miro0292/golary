@@ -22,27 +22,27 @@ export default function LoginPage() {
       </div>
       <div className="flex items-center justify-center p-6">
         <div className="w-full max-w-sm">
-          <div className="mb-6 grid grid-cols-2 rounded-full bg-gray-100 p-1 text-sm font-bold uppercase">
+          <div className="mb-6 grid grid-cols-2 rounded-full bg-gray-100 p-1 text-sm font-bold uppercase dark:bg-white/5">
             {(["login", "registro"] as const).map((t) => (
-              <button key={t} onClick={() => { setTab(t); setSent(false); }} className={`rounded-full py-2 ${tab === t ? "bg-white shadow" : "text-gray-500"}`}>
+              <button key={t} onClick={() => { setTab(t); setSent(false); }} className={`rounded-full py-2 ${tab === t ? "bg-white shadow dark:bg-white/15" : "text-gray-500 dark:text-gray-400"}`}>
                 {t === "login" ? "Ingresar" : "Crear cuenta"}
               </button>
             ))}
           </div>
           <form onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="space-y-4">
             {tab === "registro" && (
-              <input required placeholder="Nombre completo" className="w-full rounded-lg px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand" />
+              <input required placeholder="Nombre completo" className="w-full rounded-lg px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-white/5 dark:ring-white/15" />
             )}
-            <input required type="email" placeholder="Correo electrónico" className="w-full rounded-lg px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand" />
-            <input required type="password" placeholder="Contraseña" className="w-full rounded-lg px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand" />
+            <input required type="email" placeholder="Correo electrónico" className="w-full rounded-lg px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-white/5 dark:ring-white/15" />
+            <input required type="password" placeholder="Contraseña" className="w-full rounded-lg px-4 py-3 ring-1 ring-gray-300 outline-none focus:ring-2 focus:ring-brand dark:bg-white/5 dark:ring-white/15" />
             <button className="w-full rounded-full bg-brand py-3 font-bold uppercase text-white hover:bg-brand-dark">
               {tab === "login" ? "Ingresar" : "Crear cuenta"}
             </button>
-            <button type="button" className="flex w-full items-center justify-center gap-2 rounded-full py-3 font-semibold ring-1 ring-gray-300 hover:bg-gray-50">
+            <button type="button" className="flex w-full items-center justify-center gap-2 rounded-full py-3 font-semibold ring-1 ring-gray-300 hover:bg-gray-50 dark:ring-white/15 dark:hover:bg-white/5">
               <span className="font-bold text-[#4285f4]">G</span> Continuar con Google
             </button>
             {sent && (
-              <p className="rounded-lg bg-brand-light p-3 text-center text-sm">
+              <p className="rounded-lg bg-brand-light p-3 text-center text-sm dark:bg-ink-soft">
                 Vista de prueba: el inicio de sesión se activará cuando conectemos la base de datos.
               </p>
             )}

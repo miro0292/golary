@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { Boxes, ExternalLink, LayoutDashboard, LogOut, Menu, Package, Receipt, RotateCcw, X } from "lucide-react";
 import { demoLogout, demoSession } from "@/lib/admin/demo-auth";
 import { useAdmin } from "@/context/AdminStore";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const nav = [
   { href: "/admin", label: "Resumen", icon: LayoutDashboard },
@@ -33,7 +34,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   useEffect(() => setOpen(false), [pathname]);
 
   if (isLogin) return <>{children}</>;
-  if (!user || !ready) return <div className="grid min-h-screen place-items-center bg-gray-100 text-gray-500">Cargando…</div>;
+  if (!user || !ready) return <div className="grid min-h-screen place-items-center bg-gray-100 text-gray-500 dark:bg-ink dark:text-gray-400">Cargando…</div>;
 
   // La opción activa es la ruta más específica que coincide con la URL actual.
   const current = nav
@@ -77,7 +78,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   );
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 transition-colors duration-300 dark:bg-ink">
       <aside className="fixed inset-y-0 left-0 hidden w-60 lg:block">{sidebar}</aside>
       <div className={`fixed inset-0 z-50 lg:hidden ${open ? "" : "pointer-events-none"}`}>
         <div className={`absolute inset-0 bg-black/50 transition-opacity ${open ? "opacity-100" : "opacity-0"}`} onClick={() => setOpen(false)} />
@@ -85,12 +86,13 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
       </div>
 
       <div className="lg:pl-60">
-        <header className="sticky top-0 z-30 flex items-center gap-3 border-b border-gray-200 bg-white px-4 py-3 lg:px-8">
+        <header className="sticky top-0 z-30 flex items-center gap-3 border-b border-gray-200 bg-white px-4 py-3 dark:border-white/10 dark:bg-ink-soft lg:px-8">
           <button className="lg:hidden" onClick={() => setOpen(true)} aria-label="Abrir menú"><Menu /></button>
-          <span className="rounded bg-yellow-100 px-2 py-0.5 text-[11px] font-bold uppercase text-yellow-800">Modo prueba</span>
+          <span className="rounded bg-yellow-100 px-2 py-0.5 text-[11px] font-bold uppercase text-yellow-800 dark:bg-yellow-400/20 dark:text-yellow-300">Modo prueba</span>
+          <ThemeToggle compact className="ml-2 ring-gray-300 hover:bg-gray-100 dark:ring-white/15 dark:hover:bg-white/5" />
           <div className="ml-auto text-right text-sm">
             <p className="font-semibold">{user.name}</p>
-            <p className="text-xs text-gray-500">{user.email}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">{user.email}</p>
           </div>
         </header>
         <main className="p-4 lg:p-8">{children}</main>
